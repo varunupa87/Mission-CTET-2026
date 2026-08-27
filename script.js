@@ -8,11 +8,11 @@ const SECONDS_PER_QUESTION = 45;   // timer budget per question
 const PASS_PERCENT = 60;           // pass threshold — CTET's actual cutoff varies by category/cycle
 
 const STUDY_FILES = [
-  { key:"cdp",    label:"1. Child Dev. & Pedagogy", file:"notes/01_Child_Development_and_Pedagogy.md" },
-  { key:"math",   label:"2. Mathematics",           file:"notes/02_Mathematics.md" },
-  { key:"sci",    label:"3. Science",                file:"notes/03_Science.md" },
-  { key:"ss",     label:"4. Social Studies",         file:"notes/04_Social_Studies.md" },
-  { key:"lang",   label:"5. Language I & II",        file:"notes/05_Language_I_and_II.md" },
+  { key:"cdp",    label:"1. Child Dev. & Pedagogy", file:"01_Child_Development_and_Pedagogy.md" },
+  { key:"math",   label:"2. Mathematics",           file:"02_Mathematics.md" },
+  { key:"sci",    label:"3. Science",                file:"03_Science.md" },
+  { key:"ss",     label:"4. Social Studies",         file:"04_Social_Studies.md" },
+  { key:"lang",   label:"5. Language I & II",        file:"05_Language_I_and_II.md" },
 ];
 
 /* ===================== PREPROCESS QUESTION DATA ===================== */
