@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CTET Paper II — Study &amp; Mock Tests</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <section id="screen-login" class="screen active">
+    <div class="login-card">
+      <div class="brand">
+        <span class="brand-mark">II</span>
+        <div>
+          <h1>CTET Paper II</h1>
+          <p class="brand-sub">Study &amp; Mock Tests · Classes VI–VIII</p>
+        </div>
+      </div>
+      <form id="login-form" autocomplete="off">
+        <label>User ID
+          <input type="text" id="login-user" placeholder="e.g. student" required autocapitalize="off">
+        </label>
+        <label>Password
+          <input type="password" id="login-pass" placeholder="••••••••" required>
+        </label>
+        <p id="login-error" class="error-text" hidden>Incorrect user ID or password. Try again.</p>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+      <p class="login-hint">Change the default login in <code>script.js</code> before you publish the site.</p>
+    </div>
+  </section>
+
+  <!-- ============ MAIN APP (post-login) ============ -->
+  <div id="main-app">
+    <header class="topbar">
+      <div class="brand brand--compact">
+        <span class="brand-mark">II</span>
+        <h1>CTET Paper II</h1>
+      </div>
+      <nav class="top-nav" id="top-nav">
+        <button class="nav-btn active" data-tab="study">Study Material</button>
+        <button class="nav-btn" data-tab="mocks">Mock Tests</button>
+      </nav>
+      <div class="topbar-right">
+        <button id="logout-btn" class="btn btn-ghost btn-small">Log out</button>
+      </div>
+    </header>
+
+    <!-- Mobile bottom tab bar -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="bottom-nav-btn active" data-tab="study">
+        <span class="bn-icon">📘</span><span>Study</span>
+      </button>
+      <button class="bottom-nav-btn" data-tab="mocks">
+        <span class="bn-icon">📝</span><span>Mock Tests</span>
+      </button>
+    </nav>
+
+    <!-- ============ TAB: STUDY MATERIAL ============ -->
+    <section id="tab-study" class="tab-content active">
+      <div class="study-layout">
+        <aside class="study-sidebar" id="study-sidebar">
+          <!-- subject buttons injected by JS -->
+        </aside>
+        <main class="study-main" id="study-main">
+          <div class="loading-note">Loading notes…</div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ============ TAB: MOCK TESTS ============ -->
+    <section id="tab-mocks" class="tab-content">
+
+      <!-- Dashboard sub-view -->
+      <div id="mocks-dashboard" class="mocks-subview active">
+        <div class="dashboard-intro">
+          <h2>Mock papers</h2>
+          <p id="dashboard-blurb">Full-length-style timed papers mixing Child Development &amp; Pedagogy with either Maths &amp; Science or Social Studies, plus passage-based Language I &amp; II sections — just like the real exam.</p>
+        </div>
+        <div id="papers-grid" class="papers-grid"></div>
+      </div>
+
+      <!-- Quiz sub-view -->
+      <div id="mocks-quiz" class="mocks-subview">
+        <header class="quiz-topbar">
+          <div class="quiz-title-block">
+            <span id="quiz-paper-title"></span>
+            <span id="quiz-progress" class="quiz-progress"></span>
+          </div>
+          <div class="timer" id="timer">10:00</div>
+        </header>
+        <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+
+        <div class="quiz-main">
+          <div id="q-passage-box" class="passage-box" hidden>
+            <div class="passage-label">Read the passage</div>
+            <p id="q-passage-text"></p>
+          </div>
+          <div class="question-card">
+            <div class="q-tag" id="q-tag"></div>
+            <h2 id="q-text"></h2>
+            <div id="q-options" class="options"></div>
+            <div id="q-explain" class="explain" hidden></div>
+          </div>
+          <div class="quiz-controls">
+            <button id="quit-btn" class="btn btn-ghost">Quit</button>
+            <button id="next-btn" class="btn btn-primary" disabled>Next question</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result sub-view -->
+      <div id="mocks-result" class="mocks-subview">
+        <div class="result-main">
+          <div class="result-card">
+            <div id="result-badge" class="result-badge"></div>
+            <h2 id="result-title"></h2>
+            <div class="result-score">
+              <div class="score-number"><span id="result-score">0</span><span class="score-total">/<span id="result-total">0</span></span></div>
+              <div class="score-percent"><span id="result-percent">0</span>% score</div>
+            </div>
+            <div class="result-meta">
+              <div><span class="meta-label">Correct</span><span id="result-correct" class="meta-value correct">0</span></div>
+              <div><span class="meta-label">Incorrect</span><span id="result-incorrect" class="meta-value incorrect">0</span></div>
+              <div><span class="meta-label">Time taken</span><span id="result-time" class="meta-value">0:00</span></div>
+            </div>
+            <div class="result-actions">
+              <button id="retry-btn" class="btn btn-primary">Retry this paper</button>
+              <button id="back-btn" class="btn btn-ghost">Back to all papers</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+</div>
+
+<script src="questions.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
