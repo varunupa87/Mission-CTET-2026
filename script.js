@@ -2,7 +2,7 @@
 // Change these before you publish the site publicly.
 // NOTE: this is a client-side-only check for a personal practice site — anyone who
 // views the page source can see these values, so don't reuse a real password here.
-const CREDENTIALS = { username: "student", password: "ctet2026" };
+const CREDENTIALS = { username: "Madhu", password: "Madhu@88" };
 
 const SECONDS_PER_QUESTION = 45;   // timer budget per question
 const PASS_PERCENT = 60;           // pass threshold — CTET's actual cutoff varies by category/cycle
